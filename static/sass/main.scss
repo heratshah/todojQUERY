@@ -1,0 +1,103 @@
+@import "mixin";
+@import "var";
+* {
+    margin: 0%;
+    box-sizing: border-box;
+    padding: 0%;
+}
+
+.form__bgimage {
+    background-color: black;
+    //background-image: url(/img/nav2.jpg);
+}
+
+.todo {
+    margin: 1% 10% 0% 10%;
+    &__check-checkall {
+        width: 5%;
+        height: 20px;
+    }
+    &__filter-checkall {
+        @include first;
+        width: 93%;
+        height: 2rem;
+        background-color: rgb(247, 247, 247);
+        color: $bg-color;
+    }
+    &__all-list {
+        margin-top: 1%;
+    }
+    &__single-list {
+        transition: all 1s ease;
+        display: flex;
+        margin-top: 2vh;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        &:hover {
+            input {
+                @include first;
+                opacity: 0.6;
+                background-color: royalblue;
+                color: white;
+            }
+        }
+        &_complated {
+            text-decoration: line-through;
+            color: red;
+            input {
+                background-color: lightgray;
+                color: white;
+            }
+        }
+        &_fall {
+            opacity: 0%;
+            transform: translate(10rem) rotateY(20deg);
+        }
+    }
+    &__checkbox {
+        @include first;
+        width: 5%;
+        height: 20px;
+    }
+    &__input {
+        @include first;
+        margin-left: 5%;
+        width: 60%;
+        background-color: rgb(247, 247, 247);
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        text-align: center;
+        color: $bg-color;
+    }
+    &__edit-btn {
+        @include first;
+        margin-left: 2%;
+        width: 5%;
+        background-color: white;
+        color: blue;
+        &:hover {
+            background-color: blue;
+            color: white;
+        }
+    }
+    &__delete-btn {
+        @include first;
+        margin-left: 2%;
+        width: 5%;
+        background-color: white;
+        color: red;
+        &:hover {
+            background-color: red;
+            color: white;
+        }
+    }
+    &__complate-btn {
+        @include first;
+        margin-left: 11%;
+        width: 5%;
+        background-color: white;
+        color: green;
+        &:hover {
+            background-color: green;
+            color: white;
+        }
+    }
+}
