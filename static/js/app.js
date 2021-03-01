@@ -1,6 +1,12 @@
 $(document).ready(function() {
     //Add List Funtion
     function addList(input) {
+        let user = input;
+        // $(".todo__all-list").append("<div class='todo__single-list'><input class='todo__checkbox' type='checkbox' value='user'><input class='todo__input' type='text' disabled=true></input><button class='todo__complate-btn'><i class='fa fa-check'></i></buttton><button class='todo__edit-btn'><i class='fa fa-edit'></i></buttton><button class='todo__delete-btn'><i class='fa fa-trash'></i></buttton></div>");
+        // $(".todo__single-list:last .todo__input").val(input);
+        //$(".todo__single-list").append("<input class='todo__checkbox' type='checkbox'><input class='todo__input' type='text' disabled=true></input><button class='todo__complate-btn'><i class='fa fa-check'></i></buttton><button class='todo__edit-btn'><i class='fa fa-edit'></i></buttton><button class='todo__delete-btn'><i class='fa fa-trash'></i></buttton>");
+        // const jsinglel = $(".todo__single-list:last");
+
 
         $(".todo__all-list").append("<div class='todo__single-list'></div>");
 
@@ -11,19 +17,20 @@ $(document).ready(function() {
         jsinglel.append("<input class='todo__input' type='text' disabled=true></input>");
 
         $(".todo__single-list:last .todo__input").val(input);
-        $(".todo__single-list:last .todo__input").text(input);
-        saveLocalTodo(input);
+        //$(".todo__single-list:last .todo__input").text(input);
+        //saveLocalTodo(input);
 
         jsinglel.append("<button class='todo__complate-btn'><i class='fa fa-check'></i></buttton>");
 
-        //$(".todo__single-list:last").append("<button class='todo__edit-btn'><i class='fa fa-edit'></i></buttton>");
+        jsinglel.append("<button class='todo__edit-btn'><i class='fa fa-edit'></i></buttton>");
 
         jsinglel.append("<button class='todo__delete-btn'><i class='fa fa-trash'></i></buttton>");
 
 
         $(".todo__delete-btn").click(function() {
             $(this).parent().addClass('todo__single-list_fall');
-            removeLocalTodo($(this).parent().find('.todo__input').val());
+            //let user = $(this).parent().find('.todo__input').val();
+            //removeLocalTodo(user);
             $(this).parent().one('transitionend', function() {
                 $(this).remove();
             });
@@ -32,12 +39,21 @@ $(document).ready(function() {
         $(".todo__complate-btn").click(function() {
             $(this).parent().addClass('todo__single-list_complated');
             const par = $(this).parent().find('.todo__input').val();
-            console.log(par);
         });
         $(".todo__complate-btn").dblclick(function() {
             $(this).parent().removeClass('todo__single-list_complated');
         });
 
+        $(".todo__edit-btn").click(function() {
+            const par = $(this).parent().find('.todo__input').val();
+            var user = prompt("Enter : ", par);
+            if (user === "") {
+                alert("Empty edit value.....");
+            } else {
+                $(this).parent().find('.todo__input').val(user);
+            }
+            //editLocalTodo(par);
+        });
         $("#filter").change(function() {
             filterTodo(event);
         });
@@ -56,7 +72,7 @@ $(document).ready(function() {
 
 
 
-        location.reload();
+        //location.reload();
     }
 
 
@@ -118,6 +134,13 @@ $(document).ready(function() {
                 $(this).parent().removeClass('todo__single-list_complated');
             });
 
+            $(".todo__edit-btn").dblclick(function() {
+                $(this).parent().removeClass('todo__single-list_complated');
+                const par = $(this).parent().find('.todo__input').val();
+                editLocalTodo(par);
+            });
+
+
             $("#filter").change(function() {
                 filterTodo(event);
             });
@@ -178,12 +201,12 @@ $(document).ready(function() {
             todos = JSON.parse(localStorage.getItem('todos'));
         }
 
-        let todoIndex = todo.children[1].value;
-        var user = prompt("Enter : ", todoIndex);
+        //let todoIndex = todo.children[1].value;
+        var user = prompt("Enter : ", todo);
         if (user === "") {
             alert("Empty edit value.....");
         } else {
-            todos.splice(todos.indexOf(todoIndex), 1, user);
+            todos.splice(todos.indexOf(todo), 1, user);
             localStorage.setItem('todos', JSON.stringify(todos));
         }
 
@@ -206,7 +229,7 @@ $(document).ready(function() {
         }
     });
 
-    $(document).ready(showLocalTodo);
+    //$(document).ready(showLocalTodo);
 });
 
 var todo__alllist = document.querySelector('.todo__all-list');
