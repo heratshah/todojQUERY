@@ -1,12 +1,6 @@
 $(document).ready(function() {
     //Add List Funtion
     function addList(input) {
-        let user = input;
-        // $(".todo__all-list").append("<div class='todo__single-list'><input class='todo__checkbox' type='checkbox' value='user'><input class='todo__input' type='text' disabled=true></input><button class='todo__complate-btn'><i class='fa fa-check'></i></buttton><button class='todo__edit-btn'><i class='fa fa-edit'></i></buttton><button class='todo__delete-btn'><i class='fa fa-trash'></i></buttton></div>");
-        // $(".todo__single-list:last .todo__input").val(input);
-        //$(".todo__single-list").append("<input class='todo__checkbox' type='checkbox'><input class='todo__input' type='text' disabled=true></input><button class='todo__complate-btn'><i class='fa fa-check'></i></buttton><button class='todo__edit-btn'><i class='fa fa-edit'></i></buttton><button class='todo__delete-btn'><i class='fa fa-trash'></i></buttton>");
-        // const jsinglel = $(".todo__single-list:last");
-
 
         $(".todo__all-list").append("<div class='todo__single-list'></div>");
 

@@ -6,13 +6,20 @@
     padding: 0%;
 }
 
+.bg-cyan {
+    background-color: darkcyan;
+}
+
 .form__bgimage {
-    background-color: black;
-    //background-image: url(/img/nav2.jpg);
+    //background-color: navy;
+    background-image: url(/img/nav2.jpg);
 }
 
 .todo {
-    margin: 1% 10% 0% 10%;
+    margin: 1% 10% 1% 10%;
+    padding: 25px;
+    box-shadow: 6px 7px 15px #ccc;
+    font-size: 14px;
     &__check-checkall {
         width: 5%;
         height: 20px;
@@ -20,7 +27,7 @@
     &__filter-checkall {
         @include first;
         width: 93%;
-        height: 2rem;
+        height: 3rem;
         background-color: rgb(247, 247, 247);
         color: $bg-color;
     }
@@ -55,12 +62,14 @@
     }
     &__checkbox {
         @include first;
+        margin-top: 18px;
         width: 5%;
         height: 20px;
     }
     &__input {
         @include first;
         margin-left: 5%;
+        padding: 10px;
         width: 60%;
         background-color: rgb(247, 247, 247);
         font-family: Verdana, Geneva, Tahoma, sans-serif;
